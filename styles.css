@@ -832,3 +832,32 @@ section {
 		}
 	}
 }
+
+/* Footer */
+.footer {
+	background-color: var(--color-grey-5);
+	padding: 1rem 0;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 5;
+}
+
+.footer-content p {
+	margin: 0;
+	color: var(--color-grey-1);
+	font-size: 0.9rem;
+}
+
+.footer-content a {
+	color: var(--color-secondary);
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.footer-content a:hover {
+	color: var(--color-white);
+	text-decoration: underline;
+}
