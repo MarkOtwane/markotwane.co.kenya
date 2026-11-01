@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="c">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Portfolio</title>
+		<meta name="description" content="Mark Otwane is a full-stack web developer creating useful, beautiful digital products.">
+		<title>Mark Otwane | Full-Stack Web Developer</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
@@ -30,11 +31,11 @@
 					</div>
 				</div>
 				<div class="right-header">
-					<h1 class="name">
+					<h1 class="name" data-content="hero.heading">
 						Hi, I'm <span>Mark Otwane.</span>
 						A Full-Stack Web Developer.
 					</h1>
-					<p>
+					<p data-content="hero.description">
 						I'm a Full-Stack Web Developer. I specialize in both Front-End and Back-End Development, creating seamless, user-friendly websites and applications. I love to create
 						beautiful and functional websites.
 					</p>
@@ -222,7 +223,7 @@
 					<h2>My <span>Portfolio </span><span class="bg-text">My Work</span></h2>
 				</div>
 				<p class="portfolio-text">Here are some of my work that I've done in various programming languages.</p>
-				<div class="portfolios">
+				<div class="portfolios" data-projects>
 					<div class="portfolio-item">
 						<div class="image">
 							<img src="hospital management.jpg" alt="" />
@@ -501,23 +502,18 @@
 								</div>
 							</div>
 						</div>
-						<!-- <div class="right-contact">
-                        <form action="submit.php" class="contact-form" method="POST">
-                            <div class="input-control i-c-2">
-                                <input type="text" name="name" required placeholder="YOUR NAME">
-                                <input type="text" name="email" placeholder="EMAIL" required>
-                            </div>
-                            <div class="input-control">
-                                <input type="text" name="subject" required placeholder="ENTER SUBJECT">
-                            </div>
-                            <div class="input-control">
-                                <textarea name="" name="message" cols="15" rows="8" placeholder="Message Here..."required></textarea>
-                            </div>
-                            <div class="submit-btn">
-                                <button>Submit</button>
-                            </div>
-                        </form>
-                    </div> -->
+						<div class="right-contact">
+							<form class="contact-form" id="contact-form">
+								<div class="input-control i-c-2">
+									<input type="text" name="name" required placeholder="YOUR NAME" autocomplete="name">
+									<input type="email" name="email" required placeholder="EMAIL" autocomplete="email">
+								</div>
+								<div class="input-control"><input type="text" name="subject" required placeholder="ENTER SUBJECT"></div>
+								<div class="input-control"><textarea name="message" cols="15" rows="8" placeholder="Message Here..." required></textarea></div>
+								<div class="submit-btn"><button type="submit">Send message</button></div>
+								<p id="contact-status" role="status"></p>
+							</form>
+						</div>
 					</div>
 				</div>
 			</section>

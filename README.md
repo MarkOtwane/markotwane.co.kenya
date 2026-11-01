@@ -379,27 +379,16 @@ For example, using VS Code Live Server.
 
 ### Backend Setup
 
-Create or navigate to the backend directory:
+The backend is included in `backend/`. Create a local PostgreSQL database, copy
+`backend/.env.example` to `backend/.env`, and set `DATABASE_URL`, `JWT_SECRET`,
+`ADMIN_EMAIL`, and `ADMIN_PASSWORD`.
 
 ```bash
-mkdir backend
 cd backend
 ```
 
-Create a NestJS application:
-
 ```bash
-npm install -g @nestjs/cli
-nest new backend
-```
-
-Install the required packages:
-
-```bash
-npm install @nestjs/config @nestjs/jwt @nestjs/passport passport passport-jwt
-npm install @nestjs/typeorm typeorm pg
-npm install class-validator class-transformer
-npm install bcrypt
+npm install
 ```
 
 Start the development server:
@@ -413,6 +402,13 @@ The backend will be available locally at:
 ```text
 http://localhost:3000
 ```
+
+The public site uses the API automatically at `http://localhost:3000/api`.
+Deployments can override this with `window.PORTFOLIO_API_URL` before loading
+`app.js`. The admin dashboard is available at `/admin/`; authenticate with the
+administrator credentials from the environment. Production deployments run the
+initial TypeORM migration automatically; it can also be run explicitly with
+`npm run build && npm run migration:run`.
 
 ## Suggested Project Structure
 

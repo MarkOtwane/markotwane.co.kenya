@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main id="login-view" class="card">
+    <h1>Portfolio Admin</h1>
+    <p>Sign in to manage your website.</p>
+    <form id="login-form">
+      <label>Email<input type="email" name="email" required autocomplete="username"></label>
+      <label>Password<input type="password" name="password" required minlength="8" autocomplete="current-password"></label>
+      <button>Sign in</button>
+      <p class="message" role="status"></p>
+    </form>
+  </main>
+  <main id="dashboard-view" hidden>
+    <header><h1>Portfolio Dashboard</h1><button id="logout" class="secondary">Log out</button></header>
+    <section class="stats">
+      <div><strong id="total-inquiries">0</strong><span>Total inquiries</span></div>
+      <div><strong id="new-inquiries">0</strong><span>New inquiries</span></div>
+      <div><strong id="total-projects">0</strong><span>Projects</span></div>
+    </section>
+    <section class="grid">
+      <form id="hero-form" class="card">
+        <h2>Hero content</h2>
+        <label>Heading<input name="heading" required></label>
+        <label>Description<textarea name="description" required></textarea></label>
+        <button>Save hero</button><p class="message" role="status"></p>
+      </form>
+      <form id="project-form" class="card">
+        <h2>Add project</h2>
+        <label>Title<input name="title" required></label>
+        <label>Description<textarea name="description" required></textarea></label>
+        <label>Image URL<input name="image"></label>
+        <label>GitHub URL<input name="githubUrl" type="url"></label>
+        <button>Add project</button><p class="message" role="status"></p>
+      </form>
+    </section>
+    <section class="card"><h2>Inquiries</h2><div id="inquiries"></div></section>
+    <section class="card"><h2>Projects</h2><div id="projects"></div></section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>
