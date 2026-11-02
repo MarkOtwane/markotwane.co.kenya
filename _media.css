@@ -140,6 +140,7 @@
     }
 
     .header-content .left-header .image{
+        height: auto;
         max-width: 300px;
         width: calc(100% - 1.5rem);
     }

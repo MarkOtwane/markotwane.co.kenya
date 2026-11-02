@@ -21,8 +21,7 @@
 		padding: 2.5rem 6rem;
 	}
 	.header-content {
-		gap: 3rem;
-		padding: 4rem 7rem 6rem 3rem;
+		padding: 4rem 8rem 6rem 3rem;
 	}
 	.about-container {
 		grid-template-columns: 1fr;
@@ -254,20 +253,19 @@ section {
 /* Header -content */
 .header-content {
 	display: grid;
-	grid-template-columns: 5fr 7fr;
+	grid-template-columns: 1fr 1.2fr;
 	align-items: center;
-	gap: 5rem;
-	max-width: 1200px;
+	gap: clamp(3rem, 6vw, 7rem);
 	min-height: 100vh;
-	margin: 0 auto;
-	padding: 4rem 8rem 6rem 4rem;
+	/* right padding keeps text clear of the fixed nav controls; bottom clears the footer */
+	padding: 3rem 9rem 5rem 6rem;
 	.left-header {
 		display: flex;
 		justify-content: center;
 		.image {
 			position: relative;
-			width: 100%;
-			max-width: 420px;
+			height: min(70vh, 720px);
+			max-width: 100%;
 			aspect-ratio: 4 / 5;
 			border-radius: var(--br-sm-2);
 			background-color: var(--color-black);
@@ -317,7 +315,8 @@ section {
 			}
 		}
 		.name {
-			font-size: clamp(2.25rem, 4vw, 3.5rem);
+			/* scales with the shorter of width and height so short laptop screens still fit */
+			font-size: clamp(2.25rem, min(4.5vw, 7vh), 5rem);
 			font-weight: 700;
 			line-height: 1.2;
 			margin: 0;
@@ -327,9 +326,10 @@ section {
 			}
 		}
 		.intro {
-			max-width: 36rem;
-			margin: 1.5rem 0 0.5rem;
-			line-height: 1.9;
+			max-width: 42rem;
+			margin: min(1.5rem, 2.5vh) 0 0.5rem;
+			font-size: clamp(1rem, 2.6vh, 1.2rem);
+			line-height: 1.8;
 			color: var(--color-grey-1);
 		}
 		.btn-con {
