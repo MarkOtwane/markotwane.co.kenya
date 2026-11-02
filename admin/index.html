@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -17,32 +18,26 @@
       <p class="message" role="status"></p>
     </form>
   </main>
-  <main id="dashboard-view" hidden>
-    <header><h1>Portfolio Dashboard</h1><button id="logout" class="secondary">Log out</button></header>
-    <section class="stats">
-      <div><strong id="total-inquiries">0</strong><span>Total inquiries</span></div>
-      <div><strong id="new-inquiries">0</strong><span>New inquiries</span></div>
-      <div><strong id="total-projects">0</strong><span>Projects</span></div>
-    </section>
-    <section class="grid">
-      <form id="hero-form" class="card">
-        <h2>Hero content</h2>
-        <label>Heading<input name="heading" required></label>
-        <label>Description<textarea name="description" required></textarea></label>
-        <button>Save hero</button><p class="message" role="status"></p>
-      </form>
-      <form id="project-form" class="card">
-        <h2>Add project</h2>
-        <label>Title<input name="title" required></label>
-        <label>Description<textarea name="description" required></textarea></label>
-        <label>Image URL<input name="image"></label>
-        <label>GitHub URL<input name="githubUrl" type="url"></label>
-        <button>Add project</button><p class="message" role="status"></p>
-      </form>
-    </section>
-    <section class="card"><h2>Inquiries</h2><div id="inquiries"></div></section>
-    <section class="card"><h2>Projects</h2><div id="projects"></div></section>
-  </main>
+
+  <div id="dashboard-view" class="layout" hidden>
+    <aside class="sidebar">
+      <div class="brand">Portfolio Admin</div>
+      <nav id="nav"></nav>
+      <div class="sidebar-footer">
+        <a href="../" target="_blank" rel="noopener" class="link-btn"><i class="fas fa-external-link-alt"></i> View site</a>
+        <button id="logout" class="secondary"><i class="fas fa-sign-out-alt"></i> Log out</button>
+      </div>
+    </aside>
+    <main class="content">
+      <header class="page-header">
+        <h1 id="page-title"></h1>
+        <p id="page-hint" class="hint"></p>
+      </header>
+      <div id="page"></div>
+    </main>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
   <script src="admin.js"></script>
 </body>
 </html>

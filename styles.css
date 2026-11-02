@@ -320,7 +320,7 @@ section {
 			font-weight: 700;
 			line-height: 1.2;
 			margin: 0;
-			span {
+			.accent {
 				color: var(--color-secondary);
 				white-space: nowrap;
 			}
@@ -618,7 +618,36 @@ section {
 	transform: scale(1);
 }
 
+.portfolio-item .image-placeholder {
+	height: 300px;
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-grey-5);
+	font-size: 3rem;
+	color: var(--color-grey-2);
+}
+
+.portfolio-item .hover-items p {
+	padding: 0 1.5rem;
+	margin-bottom: 1rem;
+	text-align: center;
+	font-size: 0.95rem;
+}
+
 /* Blogs sections */
+.blogs-empty {
+	grid-column: 1 / -1;
+	text-align: center;
+	color: var(--color-grey-2);
+	padding: 3rem 0;
+}
+
+.blog-text h4 a {
+	color: inherit;
+}
+
 .blogs {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);

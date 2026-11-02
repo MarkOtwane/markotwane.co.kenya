@@ -4,7 +4,7 @@ import { Repository } from "typeorm";
 import { Content } from "./entities";
 import { JwtGuard } from "./auth";
 
-const RESOURCES = ["skills", "services", "experience", "education", "testimonials", "social-links", "settings", "seo"];
+export const RESOURCES = ["skills", "services", "experience", "education", "testimonials", "social-links", "settings", "seo"];
 
 @Controller()
 export class ManagedController {

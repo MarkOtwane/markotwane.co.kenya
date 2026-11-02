@@ -3,25 +3,103 @@ const sectBtns = document.querySelectorAll(".controls");
 const sectBtn = document.querySelectorAll(".control");
 const allSections = document.querySelector(".main-content");
 const API_URL = window.PORTFOLIO_API_URL || "http://localhost:3000/api";
-// Paste the Google Docs share link here (sharing: "Anyone with the link can view").
-// While it is empty, the CV buttons fall back to the bundled PDF.
-const CV_URL = "";
 
-function setupCvLinks() {
-	if (!CV_URL) return;
-	document.querySelectorAll("[data-cv-link]").forEach((link) => (link.href = CV_URL));
+// Uploaded images are stored by the API as "media/<id>"; anything else is a normal URL or a file next to the site.
+function mediaUrl(value) {
+	return /^media\//.test(value || "") ? `${API_URL}/${value}` : value;
+}
+
+function lookup(content, path) {
+	return path.split(".").reduce((value, key) => (value == null ? undefined : value[key]), content);
+}
+
+const listRenderers = {
+	stats: (content) =>
+		(content.about?.stats || []).map((stat) => `
+			<div class="about-item">
+				<div class="abt-text">
+					<p class="large-text">${escapeHtml(stat.value)}</p>
+					<p class="small-text">${escapeHtml(stat.label)}</p>
+				</div>
+			</div>`),
+	skills: (content) =>
+		(content.skills || []).map((skill) => {
+			const level = Math.max(0, Math.min(100, Number(skill.level) || 0));
+			return `
+			<div class="progress-bar">
+				<div class="prog-header">
+					<p class="prog-title">${escapeHtml(skill.name)}</p>
+					<p class="prog-text">${level}%</p>
+				</div>
+				<div class="progress" role="progressbar" aria-label="${escapeHtml(skill.name)}" aria-valuenow="${level}" aria-valuemin="0" aria-valuemax="100">
+					<span style="--value: ${level}%"></span>
+				</div>
+			</div>`;
+		}),
+	experience: (content) =>
+		(content.experience || []).map((item) => `
+			<div class="timeline-item">
+				<div class="tl-icon"><i class="fas fa-briefcase"></i></div>
+				<p class="tl-duration">${escapeHtml(item.period)}</p>
+				<h5>${escapeHtml(item.role)} <span>${escapeHtml(item.company)}</span></h5>
+				<p>${escapeHtml(item.description)}</p>
+			</div>`),
+	blogs: (content) => {
+		const posts = content.blogs || [];
+		if (!posts.length) return [`<p class="blogs-empty">${escapeHtml(content.blog?.emptyText || "")}</p>`];
+		return posts.map((post) => {
+			const title = post.url ? `<a href="${escapeHtml(post.url)}" target="_blank" rel="noopener">${escapeHtml(post.title)}</a>` : escapeHtml(post.title);
+			return `
+			<article class="blog">
+				${post.image ? `<img src="${escapeHtml(mediaUrl(post.image))}" alt="" loading="lazy" />` : ""}
+				<div class="blog-text">
+					<h4>${title}</h4>
+					<p>${escapeHtml(post.excerpt)}</p>
+				</div>
+			</article>`;
+		});
+	},
+	socials: (content) =>
+		(content.contact?.socials || []).filter((social) => social.url).map((social) => `
+			<a href="${escapeHtml(social.url)}" target="_blank" rel="noopener" aria-label="${escapeHtml(social.platform)}">
+				<i class="fab fa-${escapeHtml(social.platform)}"></i>
+			</a>`)
+};
+
+function renderContent(content) {
+	if (content.site?.title) document.title = content.site.title;
+	document.querySelectorAll("[data-meta]").forEach((meta) => {
+		const value = lookup(content, meta.dataset.meta);
+		if (typeof value === "string") meta.setAttribute("content", value);
+	});
+	document.querySelectorAll("[data-content]").forEach((element) => {
+		const value = lookup(content, element.dataset.content);
+		if (typeof value === "string") element.textContent = value;
+	});
+	document.querySelectorAll("[data-content-href]").forEach((element) => {
+		const value = lookup(content, element.dataset.contentHref);
+		if (typeof value === "string" && value) element.href = (element.dataset.hrefPrefix || "") + mediaUrl(value);
+	});
+	document.querySelectorAll("[data-content-src]").forEach((element) => {
+		const value = lookup(content, element.dataset.contentSrc);
+		if (typeof value === "string" && value) element.src = mediaUrl(value);
+	});
+	document.querySelectorAll("[data-title]").forEach((element) => {
+		const section = content[element.dataset.title];
+		if (section?.titleLead !== undefined) element.innerHTML = `${escapeHtml(section.titleLead)} <span>${escapeHtml(section.titleAccent || "")}</span>`;
+	});
+	document.querySelectorAll("[data-list]").forEach((element) => {
+		const render = listRenderers[element.dataset.list];
+		if (render) element.innerHTML = render(content).join("");
+	});
 }
 
 async function loadManagedContent() {
 	try {
 		const response = await fetch(`${API_URL}/content`);
 		if (!response.ok) return;
-		const content = await response.json();
-		content.forEach((entry) => Object.entries(entry.value || {}).forEach(([field, value]) => {
-			document.querySelectorAll(`[data-content="${entry.key}.${field}"]`).forEach((element) => {
-				if (typeof value === "string") element.textContent = value;
-			});
-		}));
+		const entries = await response.json();
+		renderContent(Object.fromEntries(entries.map((entry) => [entry.key, entry.value])));
 	} catch {
 		// The static content remains available when the API is offline.
 	}
@@ -32,15 +110,16 @@ async function loadManagedProjects() {
 		const response = await fetch(`${API_URL}/projects`);
 		if (!response.ok) return;
 		const projects = await response.json();
-		if (!projects.length) return;
 		const container = document.querySelector("[data-projects]");
 		if (!container) return;
 		container.innerHTML = projects.map((project) => `
 			<article class="portfolio-item">
-				<div class="image"><img src="${escapeHtml(project.image || "reduced_image_65_percent.png")}" alt="${escapeHtml(project.title)}" loading="lazy"></div>
-				<div class="hover-items"><h3>${escapeHtml(project.title)}</h3><div class="icons">
-					${project.githubUrl ? `<a href="${escapeHtml(project.githubUrl)}" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>` : ""}
-					${project.liveUrl ? `<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>` : ""}
+				<div class="image">${project.image ? `<img src="${escapeHtml(mediaUrl(project.image))}" alt="${escapeHtml(project.title)}" loading="lazy">` : `<div class="image-placeholder"><i class="fas fa-code"></i></div>`}</div>
+				<div class="hover-items"><h3>${escapeHtml(project.title)}</h3>
+					${project.description ? `<p>${escapeHtml(project.description)}</p>` : ""}
+					<div class="icons">
+					${project.githubUrl ? `<a href="${escapeHtml(project.githubUrl)}" target="_blank" rel="noopener" aria-label="Source code"><i class="fab fa-github"></i></a>` : ""}
+					${project.liveUrl ? `<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener" aria-label="Live site"><i class="fas fa-external-link-alt"></i></a>` : ""}
 				</div></div>
 			</article>`).join("");
 	} catch {
@@ -49,7 +128,7 @@ async function loadManagedProjects() {
 }
 
 function escapeHtml(value) {
-	return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character]);
+	return String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character]);
 }
 
 async function submitInquiry(event) {
@@ -168,6 +247,5 @@ function pageTransitions() {
 
 // call the function
 pageTransitions();
-setupCvLinks();
 loadManagedContent();
 loadManagedProjects();

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Mark Otwane is a full-stack web developer creating useful, beautiful digital products.">
+		<meta name="description" data-meta="site.description" content="Mark Otwane is a full-stack web developer creating useful, beautiful digital products.">
 		<title>Mark Otwane | Full-Stack Web Developer</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -26,25 +26,25 @@
 			<div class="header-content">
 				<div class="left-header">
 					<div class="image">
-						<img src="MarkB.png" alt="Portrait of Mark Otwane" />
+						<img src="MarkB.png" alt="Portrait of Mark Otwane" data-content-src="hero.image" />
 					</div>
 				</div>
 				<div class="right-header">
-					<p class="eyebrow">Welcome to my portfolio</p>
-					<h1 class="name" data-content="hero.heading">
-						Hi, I'm <span>Mark Otwane.</span><br />
-						A Full-Stack Web Developer.
+					<p class="eyebrow" data-content="hero.eyebrow">Welcome to my portfolio</p>
+					<h1 class="name">
+						<span data-content="hero.greeting">Hi, I'm</span> <span class="accent" data-content="hero.name">Mark Otwane.</span><br />
+						<span data-content="hero.role">A Full-Stack Web Developer.</span>
 					</h1>
 					<p class="intro" data-content="hero.description">
 						I'm a Full-Stack Web Developer. I specialize in both Front-End and Back-End Development, creating seamless, user-friendly websites and applications. I love to create
 						beautiful and functional websites.
 					</p>
 					<div class="btn-con">
-						<a href="MARK OTWANE RESUME.pdf" class="main-btn" data-cv-link target="_blank" rel="noopener">
-							<span class="btn-text">View CV</span>
+						<a href="MARK OTWANE RESUME.pdf" class="main-btn" data-content-href="hero.cvUrl" target="_blank" rel="noopener">
+							<span class="btn-text" data-content="hero.cvLabel">View CV</span>
 							<span class="btn-icon"><i class="fas fa-external-link-alt"></i></span>
 						</a>
-						<button type="button" class="secondary-btn" data-goto="contact">Contact me</button>
+						<button type="button" class="secondary-btn" data-goto="contact" data-content="hero.contactLabel">Contact me</button>
 					</div>
 				</div>
 			</div>
@@ -53,24 +53,24 @@
 			<!-- About section -->
 			<section class="section sec2 about" id="about">
 				<div class="main-title">
-					<h2>About <span>me </span><span class="bg-text">My stats</span></h2>
+					<h2 data-title="about">About <span>me</span></h2>
 				</div>
 				<div class="about-container">
 					<div class="left-about">
-						<h4>Information About me</h4>
-						<p>
+						<h4 data-content="about.infoTitle">Information About me</h4>
+						<p data-content="about.text">
 							I have dedicated my career to blending artistic vision with technical proficiency. With years of experience in web development, I craft responsive, user-friendly
 							websites that make a lasting impression. My graphic design skills bring brands to life through compelling visuals, while my video editing expertise transforms raw
 							footage into engaging stories.
 						</p>
 						<div class="btn-con">
-							<a href="MARK OTWANE RESUME.pdf" class="main-btn" data-cv-link target="_blank" rel="noopener">
-								<span class="btn-text">View CV</span>
+							<a href="MARK OTWANE RESUME.pdf" class="main-btn" data-content-href="hero.cvUrl" target="_blank" rel="noopener">
+								<span class="btn-text" data-content="hero.cvLabel">View CV</span>
 								<span class="btn-icon"><i class="fas fa-external-link-alt"></i></span>
 							</a>
 						</div>
 					</div>
-					<div class="right-about">
+					<div class="right-about" data-list="stats">
 						<div class="about-item">
 							<div class="abt-text">
 								<p class="large-text">30+</p>
@@ -110,8 +110,8 @@
 					</div>
 				</div>
 				<div class="about-stats">
-					<h4 class="stat-title">My Skills</h4>
-					<div class="progress-bars">
+					<h4 class="stat-title" data-content="about.skillsTitle">My Skills</h4>
+					<div class="progress-bars" data-list="skills">
 						<div class="progress-bar">
 							<div class="prog-header">
 								<p class="prog-title">HTML5</p>
@@ -168,8 +168,8 @@
 						</div>
 					</div>
 				</div>
-				<h4 class="stat-title">My Timeline</h4>
-				<div class="timeline">
+				<h4 class="stat-title" data-content="about.timelineTitle">My Timeline</h4>
+				<div class="timeline" data-list="experience">
 					<div class="timeline-item">
 						<div class="tl-icon">
 							<i class="fas fa-briefcase"></i>
@@ -211,9 +211,9 @@
 			<!-- Portfolio -->
 			<section class="section sec3 portfolio" id="portfolio">
 				<div class="main-title">
-					<h2>My <span>Portfolio </span><span class="bg-text">My Work</span></h2>
+					<h2 data-title="portfolio">My <span>Portfolio</span></h2>
 				</div>
-				<p class="portfolio-text">Here are some of my work that I've done in various programming languages.</p>
+				<p class="portfolio-text" data-content="portfolio.intro">Here are some of my work that I've done in various programming languages.</p>
 				<div class="portfolios" data-projects>
 					<div class="portfolio-item">
 						<div class="image">
@@ -354,79 +354,10 @@
 			<section class="section sec4" id="blogs">
 				<div class="blogs-content">
 					<div class="main-title">
-						<h2>My <span>Blogs</span><span class="bg-text">My Blogs</span></h2>
+						<h2 data-title="blog">My <span>Blogs</span></h2>
 					</div>
-					<div class="blogs">
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
-						<div class="blog">
-							<img src="blog1" alt="" />
-							<div class="blog-text">
-								<h4>How to create Your Own Website</h4>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates et, velit totam cumque, error ab fuga placeat excepturi eveniet in quia. Qui fugiat
-									deleniti architecto facere, nihil amet. Nesciunt, pariatur.
-								</p>
-							</div>
-						</div>
+					<div class="blogs" data-list="blogs">
+						<p class="blogs-empty" data-content="blog.emptyText">Articles are coming soon.</p>
 					</div>
 				</div>
 			</section>
@@ -435,19 +366,19 @@
 			<section class="section sec5 contact" id="contact">
 				<div class="contact-container">
 					<div class="main-title">
-						<h2>Contact <span>Me</span><span class="bg-text">My Contact</span></h2>
+						<h2 data-title="contact">Contact <span>Me</span></h2>
 					</div>
 					<div class="contact-content-con">
 						<div class="left-contact">
-							<h4>Contact me here</h4>
-							<p>Feel free to reach out I'm always happy to here from you.</p>
+							<h4 data-content="contact.heading">Contact me here</h4>
+							<p data-content="contact.text">Feel free to reach out I'm always happy to here from you.</p>
 							<div class="contact-info">
 								<div class="contact-item">
 									<div class="icon">
 										<i class="fas fa-map-marker-alt"></i>
 										Location
 									</div>
-									<p>Nairobi, Kenya.</p>
+									<p data-content="contact.location">Nairobi, Kenya.</p>
 								</div>
 								<div class="contact-item">
 									<div class="icon">
@@ -455,7 +386,7 @@
 										Email
 									</div>
 									<p>
-										<a href="mailto:otwanemark005@gmail.com">Email Me.</a>
+										<a href="mailto:otwanemark005@gmail.com" data-content-href="contact.email" data-href-prefix="mailto:" data-content="contact.email">otwanemark005@gmail.com</a>
 									</p>
 								</div>
 								<div class="contact-item">
@@ -463,18 +394,18 @@
 										<i class="fas fa-phone-alt"></i>
 										Mobile Number
 									</div>
-									<p>+254114735711.</p>
+									<p><a href="tel:+254114735711" data-content-href="contact.phone" data-href-prefix="tel:" data-content="contact.phone">+254114735711</a></p>
 								</div>
 								<div class="contact-item">
 									<div class="icon">
 										<i class="fa-solid fa-language"></i>
 										Languages
 									</div>
-									<p>English, Swahili, Teso.</p>
+									<p data-content="contact.languages">English, Swahili, Teso.</p>
 								</div>
 							</div>
 							<div class="contact-icons">
-								<div class="contact-icon">
+								<div class="contact-icon" data-list="socials">
 									<a href="https://www.facebook.com/otwanemark" target="_blank">
 										<i class="fab fa-facebook"></i>
 									</a>
@@ -484,7 +415,7 @@
 									<a href="https://www.instagram.com/otwanemark/" target="_blank">
 										<i class="fab fa-instagram"></i>
 									</a>
-									<a href="www.linkedin.com" target="_blank">
+									<a href="https://www.linkedin.com" target="_blank">
 										<i class="fab fa-linkedin"></i>
 									</a>
 									<a href="https://github.com/MarkOtwane/" target="_blank">
@@ -532,7 +463,7 @@
 		</div>
 		<footer class="footer">
 			<div class="footer-content">
-				<p>Developed by <a href="https://microtech-solutions.vercel.app/" target="_blank">Microtech Solutions Limited</a></p>
+				<p><span data-content="site.footerText">Developed by</span> <a href="https://microtech-solutions.vercel.app/" target="_blank" rel="noopener" data-content-href="site.footerLinkUrl" data-content="site.footerLinkText">Microtech Solutions Limited</a></p>
 			</div>
 		</footer>
 		<script src="app.js"></script>

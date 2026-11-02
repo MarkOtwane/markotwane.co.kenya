@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Injectable, Post, Request, UnauthorizedException, UseGuards } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Get, Injectable, Post, Request, UnauthorizedException, UseGuards } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcrypt";
@@ -9,6 +9,11 @@ import { Admin } from "./entities";
 export class LoginDto {
   @IsEmail() email!: string;
   @IsString() @MinLength(8) password!: string;
+}
+
+export class ChangePasswordDto {
+  @IsString() currentPassword!: string;
+  @IsString() @MinLength(8) newPassword!: string;
 }
 
 @Injectable()
@@ -22,6 +27,13 @@ export class AuthService {
     }
     if (!admin || !(await bcrypt.compare(dto.password, admin.passwordHash))) throw new UnauthorizedException("Invalid email or password");
     return { accessToken: this.jwt.sign({ sub: admin.id, email: admin.email }), admin: { id: admin.id, email: admin.email } };
+  }
+  async changePassword(adminId: string, dto: ChangePasswordDto) {
+    const admin = await this.admins.findOneBy({ id: adminId });
+    if (!admin || !(await bcrypt.compare(dto.currentPassword, admin.passwordHash))) throw new BadRequestException("Current password is incorrect");
+    admin.passwordHash = await bcrypt.hash(dto.newPassword, 12);
+    await this.admins.save(admin);
+    return { success: true };
   }
 }
 
@@ -42,4 +54,5 @@ export class AuthController {
   @Post("login") login(@Body() dto: LoginDto) { return this.auth.login(dto); }
   @Get("profile") @UseGuards(JwtGuard) profile(@Request() req: any) { return req.admin; }
   @Post("logout") logout() { return { success: true }; }
+  @Post("password") @UseGuards(JwtGuard) changePassword(@Request() req: any, @Body() dto: ChangePasswordDto) { return this.auth.changePassword(req.admin.sub, dto); }
 }

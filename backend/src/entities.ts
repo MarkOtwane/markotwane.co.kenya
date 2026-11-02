@@ -45,3 +45,13 @@ export class Inquiry {
   @CreateDateColumn() createdAt!: Date;
   @UpdateDateColumn() updatedAt!: Date;
 }
+
+@Entity("media")
+export class Media {
+  @PrimaryGeneratedColumn("uuid") id!: string;
+  @Column() filename!: string;
+  @Column() mimeType!: string;
+  @Column({ type: "bytea", select: false }) data!: Buffer;
+  @Column() size!: number;
+  @CreateDateColumn() createdAt!: Date;
+}

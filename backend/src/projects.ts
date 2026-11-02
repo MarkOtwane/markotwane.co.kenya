@@ -1,6 +1,6 @@
 import { Body, Controller, Injectable, NotFoundException, ParseUUIDPipe, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { IsOptional, IsString } from "class-validator";
+import { IsInt, IsOptional, IsString } from "class-validator";
 import { Repository } from "typeorm";
 import { Project } from "./entities";
 import { JwtGuard } from "./auth";
@@ -12,6 +12,7 @@ export class ProjectDto {
   @IsOptional() @IsString() githubUrl?: string;
   @IsOptional() @IsString() liveUrl?: string;
   @IsOptional() technologies?: string[];
+  @IsOptional() @IsInt() sortOrder?: number;
 }
 
 @Injectable()
