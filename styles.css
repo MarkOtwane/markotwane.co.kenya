@@ -21,10 +21,8 @@
 		padding: 2.5rem 6rem;
 	}
 	.header-content {
-		grid-template-columns: 1fr;
-	}
-	.header-content .right-header {
-		padding-right: 2rem;
+		gap: 3rem;
+		padding: 4rem 7rem 6rem 3rem;
 	}
 	.about-container {
 		grid-template-columns: 1fr;
@@ -49,13 +47,6 @@
 	}
 	.header-content {
 		align-items: center;
-	}
-	.header-content .left-header .image {
-		width: 100%;
-		height: auto;
-	}
-	.header-content .right-header {
-		padding-right: 0;
 	}
 	.portfolios {
 		grid-template-columns: 1fr;
@@ -108,16 +99,17 @@
 .light-mode {
 	/* Light theme: background light, primary text dark, subtle greys */
 	--color-primary: #ffffff; /* page background */
-	--color-secondary: #27ae60; /* accent color */
+	--color-secondary: #1e9e52; /* accent color, darkened for contrast on white */
 	--color-white: #111827; /* primary text color on light bg */
 	--color-black: #000000;
 	--color-grey0: #f8f9fb; /* light surface */
-	--color-grey-1: #6b7280; /* muted text */
-	--color-grey-2: #9ca3af; /* secondary muted */
-	--color-grey-3: #4b5563; /* borders/text */
-	--color-grey-4: #e6e9ee; /* surfaces/controls */
-	--color-grey-5: #d1d5db; /* lighter surface */
+	--color-grey-1: #4b5563; /* muted text */
+	--color-grey-2: #6b7280; /* secondary muted */
+	--color-grey-3: #9ca3af; /* borders */
+	--color-grey-4: #eef0f3; /* surfaces/controls */
+	--color-grey-5: #e5e7eb; /* lighter surface */
 	--color-grey-6: #f3f4f6; /* very light */
+	--box-shadow-1: 0 3px 15px rgba(17, 24, 39, 0.1);
 }
 
 body {
@@ -247,7 +239,7 @@ section {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+	box-shadow: var(--box-shadow-1);
 	transition: all 0.1s ease-in-out;
 	&:active {
 		transform: translateY(-5px);
@@ -262,33 +254,39 @@ section {
 /* Header -content */
 .header-content {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 5fr 7fr;
+	align-items: center;
+	gap: 5rem;
+	max-width: 1200px;
 	min-height: 100vh;
+	margin: 0 auto;
+	padding: 4rem 8rem 6rem 4rem;
 	.left-header {
 		display: flex;
-		align-items: center;
-		position: relative;
-		.h-shape {
-			transition: all 0.4s ease-in-out;
-			width: 65%;
-			height: 100%;
-			background-color: var(--color-secondary);
-			position: absolute;
-			left: 0;
-			top: 0;
-			z-index: -1;
-			clip-path: polygon(0 0, 62% 0, 93% 100%, 0% 100%);
-		}
+		justify-content: center;
 		.image {
+			position: relative;
+			width: 100%;
+			max-width: 420px;
+			aspect-ratio: 4 / 5;
 			border-radius: var(--br-sm-2);
-			width: 68%;
-			height: 90%;
 			background-color: var(--color-black);
-			transition: all 0.4s ease-in-out;
+			box-shadow: var(--box-shadow-1);
+			/* offset accent frame behind the photo */
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 1.5rem -1.5rem -1.5rem 1.5rem;
+				border: 2px solid var(--color-secondary);
+				border-radius: var(--br-sm-2);
+				z-index: -1;
+			}
 			img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				object-position: top;
+				border-radius: inherit;
 				transition: all 0.4s ease-in-out;
 				filter: grayscale(100%);
 				&:hover {
@@ -301,17 +299,62 @@ section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding-right: 18rem;
-		.name {
-			font-size: 3rem;
-			span {
-				color: var(--color-secondary);
+		.eyebrow {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin: 0 0 1rem;
+			font-size: 0.85rem;
+			font-weight: 600;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			color: var(--color-secondary);
+			&::before {
+				content: "";
+				width: 2.5rem;
+				height: 2px;
+				background-color: var(--color-secondary);
 			}
 		}
-		p {
-			margin: 1.5rem 0;
-			line-height: 2rem;
+		.name {
+			font-size: clamp(2.25rem, 4vw, 3.5rem);
+			font-weight: 700;
+			line-height: 1.2;
+			margin: 0;
+			span {
+				color: var(--color-secondary);
+				white-space: nowrap;
+			}
 		}
+		.intro {
+			max-width: 36rem;
+			margin: 1.5rem 0 0.5rem;
+			line-height: 1.9;
+			color: var(--color-grey-1);
+		}
+		.btn-con {
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+	}
+}
+
+.secondary-btn {
+	display: inline-flex;
+	align-items: center;
+	min-height: 52px;
+	padding: 0 1.75rem;
+	border: 1px solid var(--color-grey-3);
+	border-radius: 30px;
+	background: transparent;
+	color: inherit;
+	font-family: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	&:hover {
+		border-color: var(--color-secondary);
+		color: var(--color-secondary);
 	}
 }
 

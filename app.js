@@ -3,6 +3,14 @@ const sectBtns = document.querySelectorAll(".controls");
 const sectBtn = document.querySelectorAll(".control");
 const allSections = document.querySelector(".main-content");
 const API_URL = window.PORTFOLIO_API_URL || "http://localhost:3000/api";
+// Paste the Google Docs share link here (sharing: "Anyone with the link can view").
+// While it is empty, the CV buttons fall back to the bundled PDF.
+const CV_URL = "";
+
+function setupCvLinks() {
+	if (!CV_URL) return;
+	document.querySelectorAll("[data-cv-link]").forEach((link) => (link.href = CV_URL));
+}
 
 async function loadManagedContent() {
 	try {
@@ -149,9 +157,17 @@ function pageTransitions() {
 	}
 
 	document.querySelector("#contact-form")?.addEventListener("submit", submitInquiry);
+
+	// In-page buttons (e.g. "Contact me") reuse the matching nav control so its highlight stays in sync
+	document.querySelectorAll("[data-goto]").forEach((button) => {
+		button.addEventListener("click", () => {
+			document.querySelector(`.control[data-id="${button.dataset.goto}"]`)?.click();
+		});
+	});
 }
 
 // call the function
 pageTransitions();
+setupCvLinks();
 loadManagedContent();
 loadManagedProjects();
