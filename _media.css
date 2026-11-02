@@ -1,5 +1,5 @@
 
-@media screen and(max-width: 600px){
+@media screen and (max-width: 600px){
     .about-container{
         grid-template-columns: 1fr;
         .right-about{
@@ -164,7 +164,7 @@
     }
 }
 
-@media screen and(max-width: 700px) {
+@media screen and (max-width: 700px) {
     .section{
         padding: 7rem 3rem;
     }

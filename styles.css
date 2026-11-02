@@ -319,6 +319,8 @@ section {
 .about-container {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	column-gap: 3rem;
+	align-items: start;
 	padding-top: 3.5rem;
 	padding-bottom: 5rem;
 	.right-about {
@@ -353,6 +355,7 @@ section {
 					color: var(--color-grey-1);
 					letter-spacing: 2px;
 					&::before {
+						content: "";
 						position: absolute;
 						left: 0;
 						top: 15px;
@@ -365,10 +368,9 @@ section {
 		}
 	}
 	.left-about {
-		padding-right: 0.8rem;
 		p {
 			line-height: 2.5rem;
-			padding: 0.8rem;
+			padding: 0.8rem 0;
 			color: var(--color-grey-1);
 		}
 		h4 {
@@ -381,59 +383,49 @@ section {
 .about-stats {
 	padding-bottom: 4rem;
 	.progress-bars {
-		/* trying to design it myself */
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		grid-gap: 2rem;
+		gap: 2rem 4rem;
+		max-width: 900px;
+		margin: 0 auto;
 		.progress-bar {
-			display: blcok;
+			display: flex;
 			flex-direction: column;
+			gap: 0.6rem;
+			.prog-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 			.prog-title {
 				text-transform: uppercase;
 				font-weight: 500;
 			}
-			.progress-con {
-				display: flex;
-				align-items: center;
-				.prog-text {
-					color: var(--color-grey-2);
-				}
-				.progress {
-					width: 100%;
-					height: 0.45rem;
+			.prog-text {
+				color: var(--color-grey-2);
+			}
+			.progress {
+				width: 100%;
+				height: 0.45rem;
+				background-color: var(--color-grey-5);
+				border-radius: 1rem;
+				overflow: hidden;
+				span {
+					display: block;
+					height: 100%;
+					width: var(--value);
 					background-color: var(--color-secondary);
-					margin-left: 1rem;
-					position: relative;
-					span {
-						position: absolute;
-						top: 0;
-						left: 0;
-						height: 100%;
-						background-color: var(--color-secondary);
-						transition: all 0.4s ease-in-out;
-						width: 60%;
-					}
-					.html {
-						width: 90%;
-					}
-					.css {
-						width: 70%;
-					}
-					.javascript {
-						width: 50%;
-					}
-					.java {
-						width: 80%;
-					}
-					.php {
-						width: 40%;
-					}
-					.mysql {
-						width: 40%;
-					}
+					border-radius: inherit;
+					animation: fillBar 1.5s ease-out;
 				}
 			}
 		}
+	}
+}
+
+@keyframes fillBar {
+	from {
+		width: 0;
 	}
 }
 
@@ -467,17 +459,17 @@ section {
 		border-left: 1px solid var(--color-grey-5);
 		.tl-icon {
 			position: absolute;
-			left: -27px;
+			left: -20px;
 			top: 0;
 			background-color: var(--color-secondary);
-			width: 10%;
-			height: 10%;
+			width: 40px;
+			height: 40px;
 			border-radius: 50%;
+			display: flex;
 			justify-content: center;
-			display: grid;
 			align-items: center;
 			i {
-				font-size: 1.3rem;
+				font-size: 1.1rem;
 			}
 		}
 		.tl-duration {
@@ -485,6 +477,7 @@ section {
 			background-color: var(--color-grey-5);
 			border-radius: 15px;
 			display: inline-block;
+			margin-top: 0.45rem;
 			font-size: 0.8rem;
 			text-transform: uppercase;
 			font-weight: 500;
