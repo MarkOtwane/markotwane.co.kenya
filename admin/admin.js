@@ -505,12 +505,32 @@ async function showDashboard() {
 $("#login-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
+  const message = $(".message", form);
+  const submit = $(".login-submit", form);
+  if (!form.email.value.trim() || !form.password.value) return (message.textContent = "Enter your email and password.");
+  message.textContent = "";
+  submit.disabled = true;
+  $("span", submit).textContent = "Signing in…";
   try {
     const result = await request("/auth/login", { method: "POST", body: JSON.stringify(Object.fromEntries(new FormData(form))) });
     token = result.accessToken;
     localStorage.setItem("portfolio-admin-token", token);
     showDashboard();
-  } catch (error) { form.querySelector(".message").textContent = error.message; }
+  } catch (error) {
+    message.textContent = error.message === "Failed to fetch" ? "Can't reach the server. Is the API running?" : error.message;
+  } finally {
+    submit.disabled = false;
+    $("span", submit).textContent = "Sign in";
+  }
+});
+
+$(".toggle-password").addEventListener("click", (event) => {
+  const button = event.currentTarget;
+  const input = $("#login-form").password;
+  const show = input.type === "password";
+  input.type = show ? "text" : "password";
+  button.setAttribute("aria-label", show ? "Hide password" : "Show password");
+  $("i", button).className = `fas ${show ? "fa-eye-slash" : "fa-eye"}`;
 });
 
 $("#nav").addEventListener("click", (event) => { const button = event.target.closest("[data-page]"); if (button) goTo(button.dataset.page); });

@@ -8,15 +8,24 @@
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-  <main id="login-view" class="card">
-    <h1>Portfolio Admin</h1>
-    <p>Sign in to manage your website.</p>
-    <form id="login-form">
-      <label>Email<input type="email" name="email" required autocomplete="username"></label>
-      <label>Password<input type="password" name="password" required minlength="8" autocomplete="current-password"></label>
-      <button>Sign in</button>
-      <p class="message" role="status"></p>
-    </form>
+  <main id="login-view" class="login">
+    <div class="login-card">
+      <div class="login-brand"><span class="logo" aria-hidden="true">MO</span><span>Portfolio Admin</span></div>
+      <h1>Welcome back</h1>
+      <p class="hint">Sign in to manage your website content.</p>
+      <form id="login-form" novalidate>
+        <label>Email
+          <span class="input-icon"><i class="fas fa-envelope" aria-hidden="true"></i><input type="email" name="email" required autocomplete="username" placeholder="you@example.com"></span>
+        </label>
+        <label>Password
+          <span class="input-icon"><i class="fas fa-lock" aria-hidden="true"></i><input type="password" name="password" required minlength="8" autocomplete="current-password" placeholder="Your password">
+            <button type="button" class="toggle-password" aria-label="Show password"><i class="fas fa-eye"></i></button></span>
+        </label>
+        <p class="message login-error" role="alert"></p>
+        <button class="login-submit"><span>Sign in</span><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+      </form>
+    </div>
+    <a href="../" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to website</a>
   </main>
 
   <div id="dashboard-view" class="layout" hidden>
