@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
+import { BadRequestException, Body, NotFoundException, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Content } from "./entities";
@@ -33,7 +33,7 @@ export class ManagedController {
     const key = this.resourceKey(resource);
     const values = await this.values(key);
     const index = values.findIndex((item) => item.id === id);
-    if (index < 0) return { error: "Resource not found" };
+    if (index < 0) throw new NotFoundException("Resource not found");
     values[index] = { ...values[index], ...value, id };
     await this.save(key, values);
     return values[index];
