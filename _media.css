@@ -4,7 +4,7 @@
 		padding: 0 !important;
 	}
 	section {
-		padding: 2rem 10rem;
+		padding: 2rem 6rem !important;
 	}
 	.contact-content-con {
 		flex-direction: column;
@@ -63,6 +63,9 @@
 		margin-left: 0;
 		margin-top: 1.5rem;
 	}
+	.section {
+		padding: 2rem 4rem !important;
+	}
 }
 
 @media screen and (max-width: 970px) {
@@ -70,10 +73,11 @@
 		overflow-x: hidden;
 	}
 	.section {
-		padding: 3rem 4rem !important;
+		padding: 2rem 3rem !important;
 	}
 	header {
 		padding: 0;
+		min-height: auto !important;
 	}
 	.theme-btn {
 		width: 50px;
@@ -82,22 +86,36 @@
 	.header-content {
 		grid-template-columns: 1fr;
 		gap: 3.5rem;
-		padding: 5rem 0 8rem;
+		padding: 4rem 1.5rem 7rem;
+		min-height: auto;
 	}
 	.header-content .right-header {
-		width: 90%;
+		width: 95%;
 		margin: 0 auto;
+		text-align: center;
+		align-items: center;
 	}
 	.header-content .right-header .name {
-		font-size: 2.25rem !important;
+		font-size: 2rem !important;
 	}
 	.header-content .right-header .name .accent {
 		white-space: normal;
+		display: block;
+	}
+	.header-content .right-header .intro {
+		max-width: 100%;
+		text-align: center;
+		margin: 1rem auto 0;
+	}
+	.header-content .right-header .btn-con {
+		justify-content: center;
+		gap: 0.75rem;
 	}
 	.header-content .left-header .image {
 		height: auto;
-		max-width: 300px;
-		width: calc(100% - 1.5rem);
+		max-width: 280px;
+		width: calc(100% - 2rem);
+		margin: 0 auto;
 	}
 	.controls {
 		top: auto;
@@ -109,129 +127,87 @@
 		width: 100%;
 		background-color: var(--color-grey-5);
 		padding: 0.5rem 0;
+		gap: 0.5rem;
 	}
 	.controls .control {
-		margin: 0.3rem 1rem;
+		width: 48px;
+		height: 48px;
+		margin: 0.3rem 0.5rem;
+		padding: 0.75rem;
+	}
+	.controls .control i {
+		font-size: 1rem;
 	}
 	.footer {
 		position: static;
+		margin-top: 2rem;
+	}
+	.main-title h2 {
+		font-size: 2rem;
 	}
 }
 
 @media screen and (max-width: 768px) {
 	.section {
-		padding: 2rem !important;
+		padding: 1.5rem 2rem !important;
+	}
+	header {
+		min-height: auto !important;
 	}
 	.header-content {
-		align-items: center;
+		padding: 3rem 1rem 6rem;
+		gap: 2rem;
 	}
-	.portfolios {
-		grid-template-columns: 1fr;
-	}
-	.blogs {
-		grid-template-columns: 1fr;
-	}
-	.timeline {
-		grid-template-columns: 1fr;
-	}
-	.about-stats .progress-bars {
-		grid-template-columns: 1fr;
-	}
-	.controls {
-		right: 1%;
-	}
-	.theme-btn {
-		right: 1%;
-		width: 48px;
-		height: 48px;
-	}
-	.footer {
-		position: static;
-	}
-}
-
-@media screen and (max-width: 600px) {
-	.section {
-		padding: 2rem 2.5rem !important;
-	}
-	.main-title h2 {
-		font-size: 2rem;
-	}
-	.main-title h2 span {
-		font-size: 2.5rem;
-	}
-	.timeline {
-		grid-template-columns: 1fr;
-		padding-bottom: 6rem;
-	}
-	.portfolios {
-		grid-template-columns: 1fr;
-		padding-bottom: 6rem;
-	}
-	.blogs {
-		grid-template-columns: 1fr;
-		padding-bottom: 6rem;
-	}
-	.about-container {
-		grid-template-columns: 1fr;
-	}
-	.about-container .right-about {
-		grid-template-columns: 1fr;
-		padding-top: 2.5rem;
-	}
-	.about-container .left-about {
-		padding-right: 0;
-	}
-	.about-container .left-about p {
-		padding-left: 0;
+	.header-content .right-header .name {
+		font-size: 1.75rem !important;
 	}
 	.header-content .left-header .image {
-		max-width: 260px;
+		max-width: 240px;
 		width: calc(100% - 2rem);
 		height: auto;
 	}
-	.header-content .right-header .name {
-		font-size: 2rem !important;
+	.portfolios {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
 	}
-	.controls .control {
-		width: 48px;
-		height: 48px;
-		padding: 0.85rem;
+	.blogs {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
 	}
-	.theme-btn {
-		width: 46px;
-		height: 46px;
+	.timeline {
+		grid-template-columns: 1fr;
+		grid-gap: 1.5rem;
 	}
-	.theme-btn i {
-		font-size: 1.25rem;
+	.about-stats .progress-bars {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
 	}
-	.footer {
-		position: static;
+	.about-container {
+		grid-template-columns: 1fr;
+		column-gap: 1.5rem;
 	}
-}
-
-@media screen and (max-width: 480px) {
-	body {
-		font-size: 0.95rem;
-	}
-	.section {
-		padding: 1.25rem !important;
-	}
-	.header-content .right-header .name {
-		font-size: 1.5rem !important;
-	}
-	.portfolios .portfolio-item img {
-		height: 220px;
-	}
-	.blogs .blog img {
-		height: 220px;
-	}
-	.contact-content-con .right-contact button {
-		width: 100%;
-		margin: 15px 0;
+	.about-container .right-about {
+		grid-template-columns: 1fr;
+		grid-gap: 1.5rem;
+		padding-top: 2rem;
 	}
 	.controls {
-		display: none;
+		right: 1%;
+		width: auto;
+		left: auto;
+		transform: none;
+		bottom: auto;
+		top: 1rem;
+		flex-direction: row;
+		justify-content: center;
+		width: 100%;
+		padding: 0.5rem 0;
+		background: transparent;
+	}
+	.controls .control {
+		margin: 0.3rem 0.5rem;
+		width: 44px;
+		height: 44px;
 	}
 	.theme-btn {
 		top: 1rem;
@@ -239,14 +215,206 @@
 		width: 44px;
 		height: 44px;
 	}
+	.theme-btn i {
+		font-size: 1.2rem;
+	}
+	.footer {
+		position: static;
+		margin-top: 2rem;
+	}
+	.main-title h2 {
+		font-size: 1.75rem;
+	}
+	.portfolio-text {
+		font-size: 0.95rem;
+		padding: 1rem 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.section {
+		padding: 1rem 1.5rem !important;
+	}
+	header {
+		min-height: auto !important;
+	}
+	.main-title h2 {
+		font-size: 1.5rem;
+	}
+	.main-title h2 span {
+		font-size: 2rem;
+	}
+	.timeline {
+		grid-template-columns: 1fr;
+		padding-bottom: 5rem;
+	}
+	.portfolios {
+		grid-template-columns: 1fr;
+		padding-bottom: 5rem;
+	}
+	.blogs {
+		grid-template-columns: 1fr;
+		padding-bottom: 5rem;
+	}
+	.about-container {
+		grid-template-columns: 1fr;
+	}
+	.about-container .right-about {
+		grid-template-columns: 1fr;
+		padding-top: 2rem;
+	}
+	.about-container .left-about {
+		padding-right: 0;
+	}
+	.about-container .left-about p {
+		padding-left: 0;
+		line-height: 2rem;
+	}
+	.header-content {
+		padding: 2.5rem 1rem 5rem;
+	}
+	.header-content .left-header .image {
+		max-width: 220px;
+		width: calc(100% - 2rem);
+		height: auto;
+	}
+	.header-content .right-header .name {
+		font-size: 1.5rem !important;
+	}
+	.header-content .right-header .intro {
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+	.controls .control {
+		width: 42px;
+		height: 42px;
+		padding: 0.6rem;
+	}
+	.controls .control i {
+		font-size: 0.9rem;
+	}
+	.theme-btn {
+		width: 42px;
+		height: 42px;
+	}
+	.theme-btn i {
+		font-size: 1.1rem;
+	}
+	.footer {
+		position: static;
+		margin-top: 1.5rem;
+		padding: 1rem 0;
+	}
 	.stat-title {
 		font-size: 1.2rem;
 		padding: 2rem 0;
 	}
 	.about-container .right-about .about-item .abt-text .large-text {
-		font-size: 2.25rem;
+		font-size: 2rem;
+	}
+	.about-container .right-about .about-item .abt-text .small-text {
+		font-size: 1rem;
+	}
+	.timeline .timeline-item {
+		padding-left: 2.5rem;
+	}
+	.timeline .timeline-item .tl-icon {
+		left: -15px;
+		width: 32px;
+		height: 32px;
+	}
+	.timeline .timeline-item .tl-icon i {
+		font-size: 0.9rem;
+	}
+	.portfolios .portfolio-item img {
+		height: 200px;
+	}
+	.blogs .blog img {
+		height: 200px;
+	}
+	.contact-content-con .right-contact button {
+		width: 100%;
+		margin: 15px 0;
+		font-size: 16px;
+	}
+	.contact-content-con .right-contact .input-control input,
+	.contact-content-con .right-contact .input-control textarea {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	body {
+		font-size: 0.9rem;
+	}
+	.section {
+		padding: 1rem !important;
+	}
+	header {
+		min-height: auto !important;
+	}
+	.header-content {
+		padding: 2rem 0.75rem 4rem;
+		gap: 1.5rem;
+	}
+	.header-content .right-header .name {
+		font-size: 1.25rem !important;
+		line-height: 1.2;
+	}
+	.header-content .right-header .intro {
+		font-size: 0.9rem;
+	}
+	.header-content .left-header .image {
+		max-width: 200px;
+		width: calc(100% - 1.5rem);
+		height: auto;
+	}
+	.portfolios .portfolio-item img {
+		height: 180px;
+	}
+	.blogs .blog img {
+		height: 180px;
+	}
+	.contact-content-con .right-contact button {
+		width: 100%;
+		margin: 10px 0;
+		padding: 10px 20px;
+		font-size: 15px;
+	}
+	.controls {
+		display: none;
+	}
+	.theme-btn {
+		top: 0.75rem;
+		right: 0.75rem;
+		width: 40px;
+		height: 40px;
+	}
+	.theme-btn i {
+		font-size: 1rem;
 	}
 	.footer {
 		position: static;
+		margin-top: 1rem;
+		padding: 0.75rem 0;
+	}
+	.stat-title {
+		font-size: 1.1rem;
+		padding: 1.5rem 0;
+	}
+	.main-title h2 {
+		font-size: 1.25rem;
+	}
+	.main-title h2 span {
+		font-size: 1.5rem;
+	}
+	.about-container .right-about .about-item .abt-text .large-text {
+		font-size: 1.75rem;
+	}
+	.timeline .timeline-item h5 {
+		font-size: 1.1rem;
+	}
+	.timeline .timeline-item p {
+		font-size: 0.9rem;
 	}
 }
