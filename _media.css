@@ -1,4 +1,7 @@
 
+/* ===== Mobile & tablet responsive overrides ===== */
+
+/* 1432px - large desktop/tablet: reduce side padding so nothing touches edges */
 @media screen and (max-width: 1432px) {
 	header {
 		padding: 0 !important;
@@ -26,6 +29,7 @@
 	}
 }
 
+/* 1070px - tablet landscape: single-column stacks + contact column */
 @media screen and (max-width: 1070px) {
 	.about-container {
 		grid-template-columns: 1fr;
@@ -45,6 +49,9 @@
 	.main-title h2 span {
 		font-size: 2rem;
 	}
+	.section {
+		padding: 2rem 4rem !important;
+	}
 	.contact-content-con {
 		flex-direction: column;
 	}
@@ -63,11 +70,9 @@
 		margin-left: 0;
 		margin-top: 1.5rem;
 	}
-	.section {
-		padding: 2rem 4rem !important;
-	}
 }
 
+/* 970px - tablet portrait: stack hero, reserve right space, bottom nav bar */
 @media screen and (max-width: 970px) {
 	body {
 		overflow-x: hidden;
@@ -77,26 +82,29 @@
 	}
 	header {
 		padding: 0;
-		min-height: auto !important;
 	}
 	.theme-btn {
 		width: 50px;
 		height: 50px;
+		top: 1rem;
+		left: 1rem;
+		right: auto;
 	}
 	.header-content {
 		grid-template-columns: 1fr;
 		gap: 3.5rem;
 		padding: 4rem 1.5rem 7rem;
 		min-height: auto;
+		text-align: center;
 	}
 	.header-content .right-header {
-		width: 95%;
+		width: 100%;
 		margin: 0 auto;
 		text-align: center;
 		align-items: center;
 	}
 	.header-content .right-header .name {
-		font-size: 2rem !important;
+		font-size: 2.25rem !important;
 	}
 	.header-content .right-header .name .accent {
 		white-space: normal;
@@ -110,6 +118,13 @@
 	.header-content .right-header .btn-con {
 		justify-content: center;
 		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+	.header-content .right-header .main-btn {
+		white-space: normal;
+	}
+	.header-content .right-header .secondary-btn {
+		white-space: normal;
 	}
 	.header-content .left-header .image {
 		height: auto;
@@ -117,36 +132,41 @@
 		width: calc(100% - 2rem);
 		margin: 0 auto;
 	}
+	/* Remove decorative frame negative inset so it never pokes past image on narrow screens */
+	.header-content .left-header .image::before {
+		inset: 1rem -1rem -1rem 1rem;
+	}
+	/* Floating dock -> bottom centered bar so it never overlaps copy */
 	.controls {
-		top: auto;
-		bottom: 0;
-		flex-direction: row;
-		justify-content: center;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 100%;
-		background-color: var(--color-grey-5);
-		padding: 0.5rem 0;
-		gap: 0.5rem;
+		top: auto !important;
+		right: auto !important;
+		left: 50% !important;
+		bottom: 0 !important;
+		transform: translateX(-50%) !important;
+		flex-direction: row !important;
+		justify-content: center !important;
+		width: 100% !important;
+		background-color: var(--color-grey-5) !important;
+		padding: 0.5rem 0 !important;
+		gap: 0.5rem !important;
+		z-index: 10 !important;
 	}
 	.controls .control {
-		width: 48px;
-		height: 48px;
-		margin: 0.3rem 0.5rem;
-		padding: 0.75rem;
+		margin: 0.3rem 0.5rem !important;
+		width: 48px !important;
+		height: 48px !important;
+		padding: 0.75rem !important;
 	}
 	.controls .control i {
-		font-size: 1rem;
+		font-size: 1rem !important;
 	}
 	.footer {
-		position: static;
+		position: static !important;
 		margin-top: 2rem;
-	}
-	.main-title h2 {
-		font-size: 2rem;
 	}
 }
 
+/* 768px - tablet: single-column grids, bottom nav bar, theme top-left */
 @media screen and (max-width: 768px) {
 	.section {
 		padding: 1.5rem 2rem !important;
@@ -157,6 +177,7 @@
 	.header-content {
 		padding: 3rem 1rem 6rem;
 		gap: 2rem;
+		text-align: center;
 	}
 	.header-content .right-header .name {
 		font-size: 1.75rem !important;
@@ -191,46 +212,57 @@
 		grid-gap: 1.5rem;
 		padding-top: 2rem;
 	}
+	.portfolio-text {
+		font-size: 0.95rem;
+		padding: 1rem 0;
+	}
+	/* Keep dock at bottom bar on tablet so it cannot cover right-side copy */
 	.controls {
-		right: 1%;
-		width: auto;
-		left: auto;
-		transform: none;
-		bottom: auto;
-		top: 1rem;
-		flex-direction: row;
-		justify-content: center;
-		width: 100%;
-		padding: 0.5rem 0;
-		background: transparent;
+		top: auto !important;
+		right: auto !important;
+		left: 50% !important;
+		bottom: 0 !important;
+		transform: translateX(-50%) !important;
+		flex-direction: row !important;
+		justify-content: center !important;
+		width: 100% !important;
+		background-color: var(--color-grey-5) !important;
+		padding: 0.5rem 0 !important;
+		gap: 0.5rem !important;
 	}
 	.controls .control {
-		margin: 0.3rem 0.5rem;
-		width: 44px;
-		height: 44px;
+		margin: 0.3rem 0.5rem !important;
+		width: 44px !important;
+		height: 44px !important;
+		padding: 0.6rem !important;
+	}
+	.controls .control i {
+		font-size: 0.95rem !important;
 	}
 	.theme-btn {
-		top: 1rem;
-		right: 1rem;
-		width: 44px;
-		height: 44px;
+		top: 1rem !important;
+		left: 1rem !important;
+		right: auto !important;
+		width: 44px !important;
+		height: 44px !important;
 	}
 	.theme-btn i {
-		font-size: 1.2rem;
+		font-size: 1.2rem !important;
 	}
 	.footer {
-		position: static;
+		position: static !important;
 		margin-top: 2rem;
 	}
 	.main-title h2 {
 		font-size: 1.75rem;
 	}
-	.portfolio-text {
-		font-size: 0.95rem;
-		padding: 1rem 0;
+	.stat-title {
+		font-size: 1.3rem;
+		padding: 2.5rem 0;
 	}
 }
 
+/* 600px - large mobile: tighten padding, shrink images */
 @media screen and (max-width: 600px) {
 	.section {
 		padding: 1rem 1.5rem !important;
@@ -286,22 +318,22 @@
 		line-height: 1.6;
 	}
 	.controls .control {
-		width: 42px;
-		height: 42px;
-		padding: 0.6rem;
+		width: 42px !important;
+		height: 42px !important;
+		padding: 0.6rem !important;
 	}
 	.controls .control i {
-		font-size: 0.9rem;
+		font-size: 0.9rem !important;
 	}
 	.theme-btn {
-		width: 42px;
-		height: 42px;
+		width: 42px !important;
+		height: 42px !important;
 	}
 	.theme-btn i {
-		font-size: 1.1rem;
+		font-size: 1.1rem !important;
 	}
 	.footer {
-		position: static;
+		position: static !important;
 		margin-top: 1.5rem;
 		padding: 1rem 0;
 	}
@@ -333,8 +365,8 @@
 		height: 200px;
 	}
 	.contact-content-con .right-contact button {
-		width: 100%;
-		margin: 15px 0;
+		width: 100% !important;
+		margin: 15px 0 !important;
 		font-size: 16px;
 	}
 	.contact-content-con .right-contact .input-control input,
@@ -343,6 +375,7 @@
 	}
 }
 
+/* 480px - small mobile: smallest text, footer static, hide nothing essential */
 @media screen and (max-width: 480px) {
 	body {
 		font-size: 0.9rem;
@@ -376,25 +409,26 @@
 		height: 180px;
 	}
 	.contact-content-con .right-contact button {
-		width: 100%;
-		margin: 10px 0;
-		padding: 10px 20px;
+		width: 100% !important;
+		margin: 10px 0 !important;
+		padding: 10px 20px !important;
 		font-size: 15px;
 	}
 	.controls {
-		display: none;
+		display: none !important;
 	}
 	.theme-btn {
-		top: 0.75rem;
-		right: 0.75rem;
-		width: 40px;
-		height: 40px;
+		top: 0.75rem !important;
+		left: 0.75rem !important;
+		right: auto !important;
+		width: 40px !important;
+		height: 40px !important;
 	}
 	.theme-btn i {
-		font-size: 1rem;
+		font-size: 1rem !important;
 	}
 	.footer {
-		position: static;
+		position: static !important;
 		margin-top: 1rem;
 		padding: 0.75rem 0;
 	}
@@ -416,5 +450,35 @@
 	}
 	.timeline .timeline-item p {
 		font-size: 0.9rem;
+	}
+}
+
+/* Ensure text never overflows its container at any size */
+@media screen and (max-width: 1024px) {
+	.main-title h2,
+	.name,
+	.intro,
+	.stat-title,
+	h1, h2, h3, h4, h5, h6,
+	p, .eyebrow, .intro, .btn-text {
+		overflow-wrap: break-word !important;
+		word-wrap: break-word !important;
+	}
+	.main-btn,
+	.secondary-btn,
+	button {
+		overflow-wrap: break-word !important;
+		white-space: normal !important;
+		max-width: 100% !important;
+	}
+	/* Grid/flex children must not force overflow */
+	.header-content,
+	.contact-content-con,
+	.about-container,
+	.right-header,
+	.left-contact,
+	.right-contact,
+	.right-about {
+		min-width: 0 !important;
 	}
 }
