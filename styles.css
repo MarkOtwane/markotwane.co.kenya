@@ -922,3 +922,534 @@ section {
 	color: var(--color-white);
 	text-decoration: underline;
 }
+
+/* ============================================================
+   MOBILE & TABLET MEDIA QUERIES (at bottom so they override desktop)
+   ============================================================ */
+
+/* <= 1024px — tablet: single-column stacks, bottom nav bar, reduced padding */
+@media screen and (max-width: 1024px) {
+	body {
+		overflow-x: hidden;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+		padding-bottom: 5rem;
+	}
+
+	section {
+		padding: 2rem 1.5rem !important;
+		padding-bottom: 7rem !important;
+	}
+
+	header {
+		padding: 0 !important;
+		min-height: auto !important;
+	}
+
+	/* Floating dock -> horizontal bottom bar so it never overlaps copy */
+	.controls {
+		top: auto !important;
+		right: auto !important;
+		left: 0 !important;
+		bottom: 0 !important;
+		transform: none !important;
+		flex-direction: row !important;
+		justify-content: center !important;
+		width: 100% !important;
+		background-color: var(--color-primary) !important;
+		padding: 0.6rem 0 !important;
+		z-index: 1000 !important;
+		border-top: 1px solid var(--color-grey-5);
+	}
+
+	.controls .control {
+		margin: 0 !important;
+		width: 48px !important;
+		height: 48px !important;
+		padding: 0.5rem !important;
+	}
+
+	.controls .control i {
+		font-size: 1rem !important;
+	}
+
+	.theme-btn {
+		width: 42px !important;
+		height: 42px !important;
+		top: 1rem !important;
+		right: 1rem !important;
+		left: auto !important;
+	}
+
+	.theme-btn i {
+		font-size: 1.2rem !important;
+	}
+
+	/* Hero stack vertically */
+	.header-content {
+		grid-template-columns: 1fr !important;
+		gap: 2rem !important;
+		padding: 3rem 1.5rem 5rem !important;
+		min-height: auto !important;
+		text-align: center !important;
+	}
+
+	.header-content .right-header {
+		width: 100% !important;
+		margin: 0 auto !important;
+		text-align: center !important;
+		align-items: center !important;
+	}
+
+	.header-content .right-header .name {
+		font-size: 2rem !important;
+		line-height: 1.2 !important;
+	}
+
+	.header-content .right-header .name .accent {
+		white-space: normal !important;
+		display: block !important;
+	}
+
+	.header-content .right-header .intro {
+		max-width: 100% !important;
+		text-align: center !important;
+		margin: 1rem auto 0 !important;
+	}
+
+	.header-content .right-header .btn-con {
+		justify-content: center !important;
+		gap: 0.75rem !important;
+		flex-wrap: wrap !important;
+	}
+
+	.header-content .right-header .main-btn {
+		white-space: normal !important;
+		max-width: 100% !important;
+	}
+
+	.header-content .right-header .secondary-btn {
+		white-space: normal !important;
+		max-width: 100% !important;
+	}
+
+	.header-content .left-header .image {
+		width: 100% !important;
+		max-width: 360px !important;
+		height: auto !important;
+		margin: 0 auto !important;
+	}
+
+	.header-content .left-header .image img {
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	/* Decorative frame stays aligned with image container */
+	.header-content .left-header .image::before {
+		inset: 1rem -1rem -1rem 1rem !important;
+	}
+
+	/* Single-column grids */
+	.about-container {
+		grid-template-columns: 1fr !important;
+		column-gap: 1.5rem !important;
+	}
+
+	.about-container .right-about {
+		grid-template-columns: 1fr !important;
+		grid-gap: 1.5rem !important;
+		padding-top: 2rem !important;
+	}
+
+	.about-stats .progress-bars {
+		grid-template-columns: 1fr !important;
+		gap: 1.5rem !important;
+		max-width: 100% !important;
+	}
+
+	.timeline {
+		grid-template-columns: 1fr !important;
+		grid-gap: 1.5rem !important;
+	}
+
+	.portfolios {
+		grid-template-columns: 1fr !important;
+		grid-gap: 1.5rem !important;
+	}
+
+	.blogs {
+		grid-template-columns: 1fr !important;
+		grid-gap: 1.5rem !important;
+	}
+
+	/* Contact stacks */
+	.contact-content-con {
+		flex-direction: column !important;
+	}
+
+	.contact-content-con .left-contact,
+	.contact-content-con .right-contact {
+		flex: none !important;
+		width: 100% !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	.contact-content-con .right-contact {
+		margin-top: 2.5rem !important;
+	}
+
+	.contact-content-con .right-contact .i-c-2 {
+		flex-direction: column !important;
+	}
+
+	.contact-content-con .right-contact .i-c-2 :last-child {
+		margin-left: 0 !important;
+		margin-top: 1.5rem !important;
+	}
+
+	.contact-content-con .right-contact button {
+		width: 100% !important;
+		margin: 15px 0 !important;
+	}
+
+	/* Footer static & centered */
+	.footer {
+		position: static !important;
+		margin-top: 2rem !important;
+	}
+
+	/* Text wrapping */
+	.main-title h2,
+	.name,
+	.intro,
+	.stat-title,
+	h1, h2, h3, h4, h5, h6,
+	p, .eyebrow, .btn-text {
+		overflow-wrap: break-word !important;
+		word-wrap: break-word !important;
+	}
+
+	.main-btn,
+	.secondary-btn,
+	button {
+		overflow-wrap: break-word !important;
+		white-space: normal !important;
+		max-width: 100% !important;
+	}
+
+	.header-content,
+	.contact-content-con,
+	.about-container,
+	.right-header,
+	.left-contact,
+	.right-contact,
+	.right-about {
+		min-width: 0 !important;
+	}
+}
+
+/* <= 768px — tablet portrait: tighter spacing */
+@media screen and (max-width: 768px) {
+	.section {
+		padding: 1.5rem 1rem !important;
+		padding-bottom: 7rem !important;
+	}
+
+	header {
+		min-height: auto !important;
+	}
+
+	.header-content {
+		padding: 2.5rem 1rem 4rem !important;
+		gap: 1.5rem !important;
+		text-align: center !important;
+	}
+
+	.header-content .right-header .name {
+		font-size: 1.75rem !important;
+	}
+
+	.header-content .left-header .image {
+		max-width: 300px !important;
+		width: calc(100% - 2rem) !important;
+		height: auto !important;
+	}
+
+	.portfolio-text {
+		font-size: 0.95rem;
+		padding: 1rem 0;
+	}
+
+	.main-title h2 {
+		font-size: 1.75rem;
+	}
+
+	.stat-title {
+		font-size: 1.3rem;
+		padding: 2.5rem 0;
+	}
+
+	.controls .control {
+		width: 44px !important;
+		height: 44px !important;
+		padding: 0.5rem !important;
+	}
+
+	.controls .control i {
+		font-size: 0.95rem !important;
+	}
+
+	.theme-btn {
+		width: 42px !important;
+		height: 42px !important;
+		top: 1rem !important;
+		right: 1rem !important;
+	}
+
+	.theme-btn i {
+		font-size: 1.2rem !important;
+	}
+}
+
+/* <= 600px — large mobile */
+@media screen and (max-width: 600px) {
+	.section {
+		padding: 1rem 1rem !important;
+		padding-bottom: 7rem !important;
+	}
+
+	header {
+		min-height: auto !important;
+	}
+
+	.main-title h2 {
+		font-size: 1.5rem;
+	}
+
+	.main-title h2 span {
+		font-size: 2rem;
+	}
+
+	.header-content {
+		padding: 2rem 1rem 4rem !important;
+	}
+
+	.header-content .left-header .image {
+		max-width: 280px !important;
+		width: calc(100% - 2rem) !important;
+		height: auto !important;
+	}
+
+	.header-content .right-header .name {
+		font-size: 1.5rem !important;
+	}
+
+	.header-content .right-header .intro {
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.timeline {
+		grid-template-columns: 1fr !important;
+		padding-bottom: 5rem;
+	}
+
+	.portfolios {
+		grid-template-columns: 1fr !important;
+		padding-bottom: 5rem;
+	}
+
+	.blogs {
+		grid-template-columns: 1fr !important;
+		padding-bottom: 5rem;
+	}
+
+	.about-container {
+		grid-template-columns: 1fr !important;
+	}
+
+	.about-container .right-about {
+		grid-template-columns: 1fr !important;
+		padding-top: 2rem;
+	}
+
+	.about-container .left-about {
+		padding-right: 0;
+	}
+
+	.about-container .left-about p {
+		padding-left: 0;
+		line-height: 2rem;
+	}
+
+	.controls .control {
+		width: 42px !important;
+		height: 42px !important;
+		padding: 0.5rem !important;
+	}
+
+	.controls .control i {
+		font-size: 0.9rem !important;
+	}
+
+	.theme-btn {
+		width: 42px !important;
+		height: 42px !important;
+	}
+
+	.theme-btn i {
+		font-size: 1.1rem !important;
+	}
+
+	.footer {
+		position: static !important;
+		margin-top: 1.5rem !important;
+		padding: 1rem 0;
+	}
+
+	.stat-title {
+		font-size: 1.2rem;
+		padding: 2rem 0;
+	}
+
+	.about-container .right-about .about-item .abt-text .large-text {
+		font-size: 2rem;
+	}
+
+	.about-container .right-about .about-item .abt-text .small-text {
+		font-size: 1rem;
+	}
+
+	.timeline .timeline-item {
+		padding-left: 2.5rem;
+	}
+
+	.timeline .timeline-item .tl-icon {
+		left: -15px;
+		width: 32px;
+		height: 32px;
+	}
+
+	.timeline .timeline-item .tl-icon i {
+		font-size: 0.9rem;
+	}
+
+	.portfolios .portfolio-item img {
+		height: 200px;
+	}
+
+	.blogs .blog img {
+		height: 200px;
+	}
+
+	.contact-content-con .right-contact button {
+		width: 100% !important;
+		margin: 15px 0 !important;
+		font-size: 16px;
+	}
+
+	.contact-content-con .right-contact .input-control input,
+	.contact-content-con .right-contact .input-control textarea {
+		font-size: 16px;
+	}
+}
+
+/* <= 480px — small mobile */
+@media screen and (max-width: 480px) {
+	body {
+		font-size: 0.9rem;
+	}
+
+	.section {
+		padding: 1rem !important;
+		padding-bottom: 7rem !important;
+	}
+
+	header {
+		min-height: auto !important;
+	}
+
+	.header-content {
+		padding: 1.5rem 0.75rem 3rem !important;
+		gap: 1.5rem !important;
+	}
+
+	.header-content .right-header .name {
+		font-size: 1.25rem !important;
+		line-height: 1.2 !important;
+	}
+
+	.header-content .right-header .intro {
+		font-size: 0.9rem;
+	}
+
+	.header-content .left-header .image {
+		max-width: 260px !important;
+		width: calc(100% - 1.5rem) !important;
+		height: auto !important;
+	}
+
+	.portfolios .portfolio-item img {
+		height: 180px;
+	}
+
+	.blogs .blog img {
+		height: 180px;
+	}
+
+	.contact-content-con .right-contact button {
+		width: 100% !important;
+		margin: 10px 0 !important;
+		padding: 10px 20px !important;
+		font-size: 15px;
+	}
+
+	.controls {
+		display: none !important;
+	}
+
+	.theme-btn {
+		top: 0.75rem !important;
+		right: 0.75rem !important;
+		left: auto !important;
+		width: 40px !important;
+		height: 40px !important;
+	}
+
+	.theme-btn i {
+		font-size: 1rem !important;
+	}
+
+	.footer {
+		position: static !important;
+		margin-top: 1rem !important;
+		padding: 0.75rem 0;
+	}
+
+	.stat-title {
+		font-size: 1.1rem;
+		padding: 1.5rem 0;
+	}
+
+	.main-title h2 {
+		font-size: 1.25rem;
+	}
+
+	.main-title h2 span {
+		font-size: 1.5rem;
+	}
+
+	.about-container .right-about .about-item .abt-text .large-text {
+		font-size: 1.75rem;
+	}
+
+	.timeline .timeline-item h5 {
+		font-size: 1.1rem;
+	}
+
+	.timeline .timeline-item p {
+		font-size: 0.9rem;
+	}
+}
